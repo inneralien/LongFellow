@@ -1,3 +1,5 @@
+Copyright (c) RTLCores LLC. 2010
+
 PortExtractor
 =============
 
