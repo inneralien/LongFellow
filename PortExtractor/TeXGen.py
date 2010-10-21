@@ -22,12 +22,20 @@ class TeXGen():
         Takes a Module object and formats the data into LaTeX
         syntax. This requires the \Describe macros provided in dtasheet.sty.
         """
-        self.string += "\subsection{%s Ports List}\n\n" % re.sub(r'_','\_',module.name)
+        self.string += "\subsection{%s Ports List}\n\n" % (module.name)
         for port in module.ports:
-            name = re.sub(r'_','\_',port.name)
+            name = port.name
             if(port.range is None):
                 range = ""
             else:
                 range = "%s," % port.range
-            self.string += "\Describe{Option}{%s}{%s%s,%s}\n" % (name, range, port.direction, port.type)
-            self.string += "%s\n\n" % port.comment
+
+            if(port.meta is not None):
+                meta = "[%s]" % port.meta
+            else:
+                meta = ""
+            self.string += "\Describe{Option}{%s}{%s%s,%s}%s\n" % (name, range, port.direction, port.type, meta)
+            self.string += "".join("%s\n" % x for x in port.comments)
+            self.string += "\n\n"
+            # Add escape characters before underscores
+        self.string = re.sub(r'_','\_',self.string)
