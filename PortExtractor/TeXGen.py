@@ -22,7 +22,7 @@ class TeXGen():
         Takes a Module object and formats the data into LaTeX
         syntax. This requires the \Describe macros provided in dtasheet.sty.
         """
-        self.string += "\subsection{%s Ports List}\n\n" % (module.name)
+        self.string += "\subsection{%s}\n\n" % (module.name)
         for port in module.ports:
             name = port.name
             if(port.range is None):
