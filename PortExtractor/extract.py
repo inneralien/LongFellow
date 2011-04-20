@@ -75,6 +75,8 @@ if __name__ == '__main__':
         sys.stderr.write("    %s\n" % i.name)
 
     for module in pe.modules:
+#        rst.format(module)
+#        rst.write()
         tex.format(module)
         tex.write()
 

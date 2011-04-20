@@ -8,7 +8,7 @@ module_end_re = re.compile(r'.*\)\s*;')
 #port_re = re.compile(r'^\s*(input|output|inout)\s+(wire|reg)?\s+(\[\d+:\d+\])?\s*(\w+),?\s*/?/? *(.*)')
 port_re = re.compile(r'^\s*(input|output|inout)\s+(signed wire|signed reg|wire|reg|signed)?\s*(\[\d+:\d+\])?\s*(\w+)')
 meta_re = re.compile(r'\/\/\s*(.*)')
-comments_re = re.compile(r'\s*\/\/\s*(.*)')
+comments_re = re.compile(r'\s*\/\/\s?(.*)')
 
 class Port():
     def __init__(self):
@@ -124,11 +124,11 @@ class PortExtractor():
                     c = comments_re.match(line)
                     if(c is not None):
                         if(not in_ports):
-                            module.addComment(c.groups())
+                            module.addComment(c.group(1))
                             self.logger.debug("  = Module Comments")
                         else:
                             self.logger.debug("  = Port Comments")
-                            port.addComment(c.groups())
+                            port.addComment(c.group(1))
                         self.logger.debug("    %r" % c.groups(1))
                 mend = module_end_re.match(line)
                 if(mend is not None):
