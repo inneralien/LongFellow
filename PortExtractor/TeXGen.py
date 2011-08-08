@@ -46,11 +46,12 @@ class TeXGen():
                 meta = ""
             # Add escape characters before underscores
 #            describe_string = "\Describe{Option}{%s}{%s%s,%s}%s\n" % (name, range, port.direction, port.type, meta)
+            hyperlink_string = "\hypertarget{port:%s}{}\n" % (name)
             describe_string = "\\begin{description}\n"
             describe_string += "    \item[%s]{\\tt %s}\hfill{\\tt %s %s}\\\\\n" % (name, range, port.direction, port.type)
             sub_describe_string = re.sub(r'_','\_',describe_string)
 #            self.string += "\Describe{Option}{%s}{%s%s,%s}%s\n" % (name, range, port.direction, port.type, meta)
-            self.string += sub_describe_string
+            self.string += hyperlink_string + sub_describe_string
             if(len(port.comments) != 0):
                 for line in port.comments:
                     m = indent_re.match(line)
