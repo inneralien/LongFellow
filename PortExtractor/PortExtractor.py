@@ -6,7 +6,8 @@ import logging
 module_name_re = re.compile(r'^\s*module\s+(\w+)')
 module_end_re = re.compile(r'.*\)\s*;')
 #port_re = re.compile(r'^\s*(input|output|inout)\s+(wire|reg)?\s+(\[\d+:\d+\])?\s*(\w+),?\s*/?/? *(.*)')
-port_re = re.compile(r'^\s*(input|output|inout)\s+(signed wire|signed reg|wire|reg|signed)?\s*(\[\d+:\d+\])?\s*(\w+)')
+#port_re = re.compile(r'^\s*(input|output|inout)\s+(signed wire|signed reg|wire|reg|signed)?\s*(\[\w+:\w+\])?\s*(\w+)')
+port_re = re.compile(r'^\s*(input|output|inout)\s+(signed wire|signed reg|wire|reg|signed)?\s*(\[.+:.+\])?\s*(\w+)')
 meta_re = re.compile(r'\/\/\s*(.*)')
 comments_re = re.compile(r'\s*\/\/\s?(.*)')
 

@@ -12,7 +12,7 @@ import TeXGen
 __author__        = "Tim Weaver"
 __copyright__     = "Copyright: (c) 2010 RTLCores"
 __creation_date__ = "Thu Sep 30 08:08:56 PDT 2010"
-__version__       = 'v0.1.0'
+__version__       = 'v0.2.0'
 
 
 if __name__ == '__main__':
